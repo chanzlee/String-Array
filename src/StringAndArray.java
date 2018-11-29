@@ -41,4 +41,18 @@ public class StringAndArray {
     // letters[str1.charAt(i)], str1.char seems to be coerced as int.
     // int[128] was due to ASCII code, a starting around 95 to +26, 121.
     // As array doubles the size, 128 seems like effective minimum.
+
+
+    //String rotation, str1  = xy, str2 = yx,
+//    yx is always a substring of str1str1 = xyxy
+    public static boolean StringRotation(String str1, String str2) {
+        int len = str1.length();
+
+        if (len == str2.length() && len>0) {
+            String str1str1 = str1+str1;
+//            return isSubstring(str1str1, str2);
+//            (assumed to be given inside the problem)
+        }
+        return false;
+    }
 }
