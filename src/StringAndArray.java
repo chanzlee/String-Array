@@ -4,7 +4,10 @@ public class StringAndArray {
     public static void main (String args[]) {
 //        System.out.println(CheckPermutation("god","fog"));
 //        System.out.println(CheckPermutation("god","dog"));
-        System.out.println(CheckPermutationHashMap("dog","god"));
+//        System.out.println(CheckPermutationHashMap("dog","god"));
+//        System.out.println(isUniqueChars("fsdfjjef"));
+//        System.out.println(isUniqueCharsSort("125^$&&asdg"));
+        System.out.println(isUniqueCharsBrute("125^$&assdg"));
     }
 
     public static boolean CheckPermutation(String str1, String str2) {
@@ -54,5 +57,50 @@ public class StringAndArray {
 //            (assumed to be given inside the problem)
         }
         return false;
+    }
+    // Write method to check if given string consists of only unique chracters.
+    // 1. ASCII (128) Ex ASCII (256) no unique possible if n>128 or 256
+    // 2. Case sensitivty
+    // 3. Can mutate string
+    // 4. Hashmap complexity will be O(n) but actually O(1) or O( min(c,n)) as limited
+    public static boolean isUniqueChars(String str) {
+        if (str.length() > 128)  return false;
+
+        boolean[] charSet = new boolean[128];
+        int len = str.length();
+        for(int i=0; i<len; i++) {
+            int value = str.charAt(i);
+            if (charSet[value] == false ){
+                charSet[value] = true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isUniqueCharsSort(String str) {
+        if (str.length() > 128) return false;
+
+        char[] arr =str.toCharArray();
+        Arrays.sort(arr);
+        for (int i=0; i<str.length()-1; i++) {
+            if (arr[i] == arr[i+1]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean isUniqueCharsBrute (String str) {
+        if (str.length() >128) return false;
+
+        for (int i=0; i< str.length(); i++) {
+            for (int j=i+1; j< str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j)) return false;
+                }
+            }
+        return true;
     }
 }
