@@ -9,7 +9,8 @@ public class StringAndArray {
 //        System.out.println(isUniqueCharsSort("125^$&&asdg"));
 //        System.out.println(isUniqueCharsBrute("125^$&assdg"));
 //        System.out.println(isPalinPermutation("13113147"));
-        System.out.println(oneAway("pale","pal"));
+//        System.out.println(oneAway("pale","pal"));
+        System.out.println(StringCompression("aabccdeeaaa"));
     }
 
     public static boolean CheckPermutation(String str1, String str2) {
@@ -171,5 +172,21 @@ public class StringAndArray {
         }
 
         return true;
+    }
+
+    public static String StringCompression (String str) {
+        StringBuilder compressed = new StringBuilder();
+        int countConsecutive = 0;
+
+        for (int i=0; i< str.length(); i++) {
+            countConsecutive ++;
+            if (i+1>= str.length() || str.charAt(i) != str.charAt(i+1)) {
+                compressed.append(str.charAt(i));
+                compressed.append(countConsecutive);
+                countConsecutive=0;
+            }
+        }
+        return compressed.length() > str.length()? str: compressed.toString();
+
     }
 }
